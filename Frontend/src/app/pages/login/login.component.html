@@ -1,0 +1,83 @@
+<div id="login">
+  <a class="navbar-brand logo" href="#">Wonder<sup>&reg;</sup></a>
+  <h2 class="login-title">Welcome Back</h2>
+  <div class="login-social">
+    <button class="facebook-btn">
+      <i class="fa-brands fa-facebook-f"></i>
+    </button>
+    <button class="linkedin-btn">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </button>
+    <button class="google-btn">
+      <i class="fa-brands fa-google-plus-g"></i>
+    </button>
+  </div>
+  <span>or use your email account</span>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="mb-3 form-group">
+      <label class="label-form" for="phone_number">Phone</label> <br />
+      <input
+        class="input-group"
+        type="text"
+        formControlName="phone_number"
+        name="phone_number"
+        id="phone_number"
+      />
+      <div
+        class="text-danger d-flex flex-column ms-2 mt-2"
+        *ngIf="
+          loginForm.get('phone_number')?.touched &&
+          loginForm.get('phone_number')?.invalid
+        "
+      >
+        <small *ngIf="loginForm.get('phone_number')?.errors?.['required']"
+          >Phone is required</small
+        >
+        <small *ngIf="loginForm.get('phone_number')?.errors?.['minlength']"
+          >Phone must be at least 10 digits</small
+        >
+        <small *ngIf="loginForm.get('phone_number')?.errors?.['pattern']"
+          >Phone must contain only numbers</small
+        >
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="label-form" for="password">Password</label> <br />
+      <input
+        class="input-group"
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        class="text-danger d-flex flex-column ms-2 mt-2"
+        *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.invalid
+        "
+      >
+        <small *ngIf="loginForm.get('password')?.errors?.['required']"
+          >Password is required</small
+        >
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="mb-3 form-check">
+        <input
+          formControlName="rememberMe"
+          type="checkbox"
+          name="term-checkbox"
+          id="term-checkbox"
+        />
+        <label class="form-check-label" for="term-checkbox">Remember me</label>
+      </div>
+      <div class="forgot-password me-4">
+        <a href="#">Fotgot password?</a>
+      </div>
+    </div>
+  </form>
+  <div class="login-action">
+    <button type="submit" (click)="onLogin()">Login</button>
+  </div>
+</div>

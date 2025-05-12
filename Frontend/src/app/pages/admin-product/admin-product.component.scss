@@ -1,0 +1,18 @@
+.add-product {
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    font-weight: bolder;
+    transition: 0.5s;
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, #d31027 0%, #ea384d 51%, #d31027 100%);
+    padding: 10px 15px;
+    text-align: center;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    &:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    }
+}

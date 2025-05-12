@@ -1,0 +1,35 @@
+.sidenav-container {
+    height: 100vh;
+    .header-logo {
+        margin-left: 20px;
+        font-weight: bolder;
+        font-size: 32px;
+        letter-spacing: -1px;
+        color: red;
+    }
+
+    mat-nav-list {
+        margin-top: 25%;
+        a {
+            padding: 0 20%;
+        }
+    }
+    .user-profile {
+        cursor: pointer;
+    }
+}
+
+mat-sidenav {
+    width: 15%;
+    background: rgba($color: #fff, $alpha: 0.5);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+mat-toolbar {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.content {
+    padding: 16px;
+}

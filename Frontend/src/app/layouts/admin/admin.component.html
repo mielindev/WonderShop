@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="products">Products</a>
+      <a mat-list-item routerLink="orders">Orders</a>
+      <a mat-list-item routerLink="users">Users</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div
+        class="d-flex flex-row justify-content-between align-items-center w-100"
+      >
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="fs-3">menu</mat-icon>
+        </button>
+        <a class="navbar-brand header-logo" routerLink="dashboard"
+          >Wonder<sup>&reg;</sup></a
+        >
+        <div
+          mat-button
+          [matMenuTriggerFor]="usermenu"
+          class="user-profile d-flex justify-content-between align-items-center"
+        >
+          <img
+            width="30px"
+            height="30px"
+            src="https://img.icons8.com/windows/96/user-male-circle.png"
+            alt=""
+          />
+          <p class="m-2 fs-6">
+            {{ user?.fullname }}
+            <i class="fa-solid fa-angle-down"></i>
+          </p>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <div class="content">
+      <!-- your main router content goes here -->
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-menu class="mt-2" #usermenu="matMenu" xPosition="after">
+  <button mat-menu-item (click)="handleMatMenu(0)">
+    <span>Thông tin tài khoản</span>
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-menu-item (click)="handleMatMenu(1)">
+    <span>Đăng xuất</span>
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-menu>

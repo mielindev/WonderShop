@@ -1,0 +1,20 @@
+<div id="authentication">
+  <div class="box-left">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="box-right">
+    <h2>Hello, Friend!</h2>
+    <p *ngIf="currentPath === '/auth/login'">
+      Don’t have an account yet? Let’s get you signed up and join the journey.
+    </p>
+    <p *ngIf="currentPath === '/auth/register'">
+      Already have an account? Log in to continue your experience with us.
+    </p>
+    <button *ngIf="currentPath === '/auth/login'" routerLink="/auth/register">
+      Register
+    </button>
+    <button *ngIf="currentPath === '/auth/register'" routerLink="/auth/login">
+      Login
+    </button>
+  </div>
+</div>

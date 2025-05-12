@@ -1,0 +1,118 @@
+.user-detail-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem;
+
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .subtitle {
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .full-width {
+        grid-column: span 2;
+    }
+
+    input {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .input-icon {
+        position: relative;
+
+        i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        input {
+            padding-left: 30px;
+        }
+    }
+
+    .phone-wrapper {
+        display: flex;
+        align-items: center;
+
+        .prefix {
+            padding: 0.5rem;
+            background: #eee;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 6px 0 0 6px;
+        }
+
+        input {
+            flex: 1;
+            border-radius: 0 6px 6px 0;
+        }
+    }
+
+    .submit-btn {
+        padding: 0.75rem;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .photo-section {
+        display: flex;
+        align-items: center;
+
+        .photo-upload {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                margin-right: 1rem;
+            }
+
+            .upload-info {
+                display: flex;
+                flex-direction: column;
+
+                input[type="file"] {
+                    margin-top: 0.5rem;
+                }
+
+                button {
+                    margin-top: 0.5rem;
+                    padding: 0.4rem 1rem;
+                    background-color: #f0f0ff;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+}

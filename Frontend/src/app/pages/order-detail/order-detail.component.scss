@@ -1,0 +1,92 @@
+.row {
+    padding: 3% 0;
+    .left-side {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        max-height: 60vh;
+        margin: 20px 0;
+        h2 {
+            font-size: 64px;
+            padding: 20px 0;
+            letter-spacing: 10px;
+        }
+        p {
+            width: 70%;
+            margin-bottom: 10%;
+        }
+    }
+    .right-side {
+        margin-top: 20px;
+        padding: 20px 10px;
+        background-color: #f6f6f6;
+        box-shadow:
+            rgba(17, 17, 26, 0.1) 0px 4px 16px,
+            rgba(17, 17, 26, 0.1) 0px 8px 24px,
+            rgba(17, 17, 26, 0.1) 0px 16px 56px;
+        .product-list {
+            padding: 10px 0 20px 0;
+            .header-product-list {
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 18px;
+                span {
+                    font-weight: 700;
+                }
+            }
+            .item-product-list {
+                width: 90%;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                background-color: white;
+                border-radius: 12px;
+                position: relative;
+                .item-image {
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .item-info {
+                    .item-name {
+                        font-size: 18px;
+                    }
+                    .item-desc {
+                        color: rgba($color: #000, $alpha: 0.5);
+                        font-style: italic;
+                    }
+                    .item-quantity {
+                        display: flex;
+                        justify-content: space-between;
+                        input {
+                            text-align: center;
+                            width: 15%;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        .total-price {
+            table {
+                width: 100%;
+                th,
+                td {
+                    padding: 10px;
+                    text-align: right;
+                    font-size: 16px;
+                }
+                .title-price {
+                    font-size: 17px;
+                    font-weight: 600;
+                    text-align: left;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}

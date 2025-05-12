@@ -1,0 +1,58 @@
+<div class="container">
+  <section class="banner">
+    <div>
+      <span class="italic-text">the</span>
+      <span class="bolder-text">STYLES</span>
+    </div>
+
+    <span class="bolder-text">MODERN</span>
+    <span class="bolder-text">LIVING</span>
+  </section>
+  <section class="my-5">
+    <div class="product">
+      <div class="product-title">
+        <span class="italic-text">our</span>
+        <span class="bolder-text">best</span>
+        <span class="italic-text">product</span>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4 g-1">
+        <div class="col" *ngFor="let product of products">
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="{{ product.url }}"
+                alt="Product Image"
+                class="img-fluid mb-3"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">{{ product.name | uppercasePipe }}</h3>
+              <div class="description">{{ product.description }}</div>
+              <div class="d-flex justify-content-center gap-2 mb-3">
+                <span class="current-price">{{
+                  product.price | currencyPipe
+                }}</span>
+                <span class="original-price">{{
+                  product.price + product.price * 0.5 | currencyPipe
+                }}</span>
+              </div>
+              <button
+                class="btn view-product w-100 d-flex justify-content-center align-items-center gap-2"
+                (click)="handleNavigateProductDetail(product.id)"
+              >
+                <i class="fa-solid fa-basket-shopping"></i>
+                View Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<a
+  href="#"
+  class="btn back-to-top d-flex justify-content-center align-items-center"
+  ><i class="fa-solid fa-angle-up"></i
+></a>

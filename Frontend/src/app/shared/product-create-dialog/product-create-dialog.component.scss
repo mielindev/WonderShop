@@ -1,0 +1,14 @@
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    .full-width {
+        width: 100%;
+    }
+    .dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+}

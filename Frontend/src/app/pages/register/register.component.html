@@ -1,0 +1,117 @@
+<div id="register">
+  <a class="navbar-brand logo" href="#">Wonder<sup>&reg;</sup></a>
+  <h2 class="register-title">Create an account</h2>
+  <div class="register-social">
+    <button>
+      <i class="fa-brands fa-facebook-f"></i>
+    </button>
+    <button>
+      <i class="fa-brands fa-linkedin-in"></i>
+    </button>
+    <button>
+      <i class="fa-brands fa-google-plus-g"></i>
+    </button>
+  </div>
+  <span>or use your email account</span>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="mb-3 form-group">
+      <label class="label-form" for="fullname">Full Name</label> <br />
+      <input
+        class="input-group"
+        formControlName="fullname"
+        type="text"
+        name="fullname"
+        id="fullname"
+      />
+      <div
+        class="text-danger d-flex flex-column ms-2 mt-2"
+        *ngIf="
+          registerForm.get('fullname')?.touched &&
+          registerForm.get('fullname')?.invalid
+        "
+      >
+        <small *ngIf="registerForm.get('fullname')?.errors?.['required']"
+          >Name is required</small
+        >
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="label-form" for="phone_number">Phone</label> <br />
+      <input
+        class="input-group"
+        type="text"
+        formControlName="phone_number"
+        name="phone_number"
+        id="phone_number"
+      />
+      <div
+        class="text-danger d-flex flex-column ms-2 mt-2"
+        *ngIf="
+          registerForm.get('phone_number')?.touched &&
+          registerForm.get('phone_number')?.invalid
+        "
+      >
+        <small *ngIf="registerForm.get('phone_number')?.errors?.['required']"
+          >Phone is required</small
+        >
+        <small *ngIf="registerForm.get('phone_number')?.errors?.['minlength']"
+          >Phone must be at least 10 digits</small
+        >
+        <small *ngIf="registerForm.get('phone_number')?.errors?.['pattern']"
+          >Phone must contain only numbers</small
+        >
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="label-form" for="password">Password</label> <br />
+      <input
+        class="input-group"
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        class="text-danger d-flex flex-column ms-2 mt-2"
+        *ngIf="
+          registerForm.get('password')?.touched &&
+          registerForm.get('password')?.invalid
+        "
+      >
+        <small *ngIf="registerForm.get('password')?.errors?.['required']"
+          >Password is required</small
+        >
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label class="label-form" for="retype_password">Re-password</label> <br />
+      <input
+        class="input-group"
+        type="password"
+        name="retype_password"
+        id="retype_password"
+        formControlName="retype_password"
+      />
+      <div
+        *ngIf="registerForm.errors?.['passwordMismatch'] &&
+    registerForm.get('retype_password')?.touched"
+      >
+        <small class="text-danger">Passwords do not match</small>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        formControlName="term_checkbox"
+        name="term_checkbox"
+        id="term_checkbox"
+      />
+      <label class="form-check-label" for="term_checkbox"
+        >I agree with <a href="#">terms and conditions</a></label
+      >
+    </div>
+  </form>
+  <div class="register-action">
+    <button type="submit" (click)="onRegister()">Register</button>
+  </div>
+</div>

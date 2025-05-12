@@ -1,0 +1,211 @@
+<div class="container my-5">
+  <h2 class="checkout-title">Checkout</h2>
+  <div class="row min-vh-100">
+    <div class="col-md-6 border-end left-checkout">
+      <h3 class="checkout-header mb-4">Thông tin người nhận</h3>
+      <form [formGroup]="orderForm" (ngSubmit)="handleOrder()">
+        <div class="mb-3">
+          <label for="fullname" class="form-label">Họ và tên</label>
+          <input
+            formControlName="fullname"
+            type="text"
+            class="form-control"
+            id="fullname"
+          />
+          <div
+            class="text-danger d-flex flex-column ms-2 mt-2"
+            *ngIf="
+              orderForm.get('fullname')?.touched &&
+              orderForm.get('fullname')?.invalid
+            "
+          >
+            <small *ngIf="orderForm.get('fullname')?.errors?.['required']"
+              >Họ và tên không được để trống</small
+            >
+            <small *ngIf="orderForm.get('fullname')?.errors?.['minlength']"
+              >Họ tên phải có ít nhất 5 ký tự</small
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Địa chỉ</label>
+          <input
+            formControlName="address"
+            type="text"
+            class="form-control"
+            id="address"
+          />
+          <div
+            class="text-danger d-flex flex-column ms-2 mt-2"
+            *ngIf="
+              orderForm.get('address')?.touched &&
+              orderForm.get('address')?.invalid
+            "
+          >
+            <small *ngIf="orderForm.get('address')?.errors?.['required']"
+              >Địa chỉ không được để trống</small
+            >
+            <small *ngIf="orderForm.get('address')?.errors?.['minlength']"
+              >Địa chỉ phải có ít nhất 5 ký tự</small
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="email"
+          />
+          <div
+            class="text-danger d-flex flex-column ms-2 mt-2"
+            *ngIf="
+              orderForm.get('email')?.invalid && orderForm.get('email')?.touched
+            "
+          >
+            <small *ngIf="orderForm.get('email')?.errors?.['required']"
+              >Email không được để trống</small
+            >
+            <small *ngIf="orderForm.get('email')?.errors?.['email']"
+              >Email không hợp lệ</small
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="phone_number" class="form-label">Số điện thoại</label>
+          <input
+            formControlName="phone_number"
+            type="text"
+            class="form-control"
+            id="phone_number"
+          />
+          <div
+            class="text-danger d-flex flex-column ms-2 mt-2"
+            *ngIf="
+              orderForm.get('phone_number')?.touched &&
+              orderForm.get('phone_number')?.invalid
+            "
+          >
+            <small *ngIf="orderForm.get('phone_number')?.errors?.['required']"
+              >Số điện thoại không được để trống</small
+            >
+            <small *ngIf="orderForm.get('phone_number')?.errors?.['minlength']"
+              >Số điện thoại phải có ít nhất 10 ký tự</small
+            >
+            <small *ngIf="orderForm.get('phone_number')?.errors?.['pattern']"
+              >Số điện thoại chỉ được phép chứa số</small
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="note" class="form-label">Ghi chú</label>
+          <input
+            formControlName="note"
+            type="text"
+            class="form-control"
+            id="note"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="shipping_method" class="form-label"
+            >Phương thức vận chuyển</label
+          >
+          <br />
+          <select
+            class="form-control"
+            formControlName="shipping_method"
+            name="shipping_method"
+            id="shipping_method"
+          >
+            <option value="standard">Tiêu chuẩn (Standard)</option>
+            <option value="express">Nhanh (Express)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="payment_method" class="form-label"
+            >Phương thức thanh toán</label
+          >
+          <br />
+          <select
+            formControlName="payment_method"
+            class="form-control"
+            name="payment_method"
+            id="payment_method"
+          >
+            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+            <option value=" e-banking">Thanh toán qua ngân hàng</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 right-checkout">
+      <h3 class="preview-product-header mb-4">Danh sách sản phẩm</h3>
+      <h3
+        *ngIf="cartItems.length === 0"
+        class="text-center p-5 fst-italic text-muted"
+      >
+        Chưa có sản phẩm nào trong giỏ hàng
+      </h3>
+      <div *ngIf="cartItems.length > 0">
+        <div class="product-list">
+          <div class="row item-product-list" *ngFor="let item of cartItems">
+            <div class="col-md-4 item-image">
+              <img
+                width="100%"
+                src="{{ item.product.url }}"
+                alt="{{ item.product.name }}"
+              />
+            </div>
+            <div class="col-md-8 item-info">
+              <p class="item-name">{{ item.product.name }}</p>
+              <p class="item-desc">
+                {{ item.product.description }}
+              </p>
+              <div class="item-quantity">
+                <div class="d-flex">
+                  <button (click)="decreaseQuantity(item.product.id)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input type="text" disabled value="{{ item.quantity }}" />
+                  <button (click)="increaseQuantity(item.product.id)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <span>{{
+                  item.product.price * item.quantity | currencyPipe
+                }}</span>
+              </div>
+            </div>
+            <div class="remove-item">
+              <button type="button" (click)="handleRemoveItem(item.product.id)">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="total-price">
+          <h3>
+            Tổng giá: <span>{{ totalAmount | currencyPipe }} </span>
+          </h3>
+        </div>
+        <div class="coupon">
+          <h4 class="coupon-header">Nhập mã giảm giá</h4>
+          <div class="coupon-content">
+            <input type="text" class="form-control" placeholder="Nhập coupon" />
+            <button class="btn btn-gradient" type="button">Áp dụng</button>
+          </div>
+        </div>
+        <div class="order-product">
+          <button
+            (click)="handleOrder()"
+            type="button"
+            class="btn btn-gradient w-100 p-2"
+          >
+            Đặt hàng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

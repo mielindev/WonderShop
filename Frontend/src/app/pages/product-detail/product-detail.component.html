@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row gy-4">
+    <div class="col-md-5">
+      <div id="carouselProductImage" class="carousel slide">
+        <div class="carousel-inner">
+          <div
+            class="carousel-item"
+            *ngFor="let image of product?.product_image; let i = index"
+            [ngClass]="{ active: i === currentImageIndex }"
+          >
+            <div class="square-image">
+              <img
+                [src]="image.image_url"
+                alt="product image"
+                class="product-image"
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          (click)="previousImage()"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          (click)="nextImage()"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="thumbnail-container">
+          <div
+            class="thumbnail-item"
+            *ngFor="let image of product?.product_image; let i = index"
+            [ngClass]="{ active: i === currentImageIndex }"
+            (click)="thumbnailClick(i)"
+          >
+            <img src="{{ image.image_url }}" alt="" class="thumbnail-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="product-detail">
+        <h2>{{ product?.name }}</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. A hic
+          reprehenderit nihil suscipit labore perferendis vel, ex ratione,
+          ducimus explicabo, libero facere animi illo exercitationem accusamus.
+          Porro dolorum dolor fuga, soluta aperiam temporibus qui tenetur
+          consectetur possimus quibusdam. Fuga consequatur velit non modi
+          corrupti, enim dolor veniam reiciendis eum omnis?
+        </p>
+        <span>{{ product?.price ?? 0 | currencyPipe }}</span>
+        <div class="product-quantity">
+          <div class="wrapper-quantity">
+            <button (click)="decreaseQuantity()">-</button>
+            <input type="text" [value]="quantity" />
+            <button (click)="increaseQuantity()">+</button>
+          </div>
+        </div>
+        <div class="product-action">
+          <button
+            id="add-to-cart"
+            type="button"
+            class="btn"
+            (click)="addToCart()"
+          >
+            Thêm vào giỏ hàng</button
+          ><button id="buy-now" type="button" class="btn">Mua ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

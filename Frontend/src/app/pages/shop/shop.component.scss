@@ -1,0 +1,92 @@
+.container {
+    padding: 20px 10px;
+    .shop-title {
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .form-select {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 5px 35px 5px 15px;
+    }
+    .product-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .product-image {
+            width: 100%;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .product-info {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px 20px;
+            .product-name {
+                font-size: 1.2vw;
+                font-weight: 600;
+            }
+
+            .current-price {
+                font-size: 24px;
+                color: red;
+                font-weight: bold;
+            }
+
+            .original-price {
+                font-size: 14px;
+                color: #999;
+                text-decoration: line-through;
+            }
+
+            .view-product {
+                background-image: linear-gradient(to right, #005c97 0%, #363795 51%, #005c97 100%);
+                padding: 15px 45px;
+                text-align: center;
+                transition: 0.5s;
+                background-size: 200% auto;
+                color: white;
+                box-shadow: 0 0 20px #eee;
+                border-radius: 10px;
+                display: block;
+                &:hover {
+                    background-position: right center;
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.pagination {
+    justify-content: center; /* Center align */
+    gap: 5px;
+    .page-item {
+        border-radius: 12px;
+    }
+    .page-item.active .page-link {
+        background-image: linear-gradient(to right, #005c97 0%, #363795 51%, #005c97 100%);
+        border-color: white;
+        color: white;
+    }
+    .page-link {
+        color: #000;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 12px;
+        cursor: pointer;
+        border-radius: 12px;
+        &:hover {
+            background-color: #f0f0f0;
+            border-color: #005c97;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg pb-3 header">
+  <div class="container">
+    <a class="navbar-brand header-logo" routerLink="">Wonder<sup>&reg;</sup></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-3" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 header-navigate">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shop" aria-current="page">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">press</a>
+        </li>
+      </ul>
+
+      <div class="d-lg-flex header-auth gap-md-2">
+        <div class="header-cart" routerLink="order">
+          <button>
+            cart
+            <i class="fa-solid fa-basket-shopping"></i>
+          </button>
+        </div>
+        <!-- Login Button -->
+        <div class="header-login" *ngIf="!user" routerLink="auth/login">
+          <button class="btn">Login</button>
+        </div>
+        <div
+          mat-button
+          [matMenuTriggerFor]="usermenu"
+          class="user-profile"
+          *ngIf="user"
+        >
+          <img
+            src="https://img.icons8.com/windows/96/user-male-circle.png"
+            alt=""
+          />
+          <p class="m-2">
+            {{ user.fullname }}
+            <i class="fa-solid fa-angle-down"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<mat-menu class="mt-2" #usermenu="matMenu" xPosition="after">
+  <button mat-menu-item (click)="handleMatMenu(0)">
+    <span>Thông tin tài khoản</span>
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-menu-item (click)="handleMatMenu(1)">
+    <span>Đơn hàng</span>
+    <mat-icon>local_shipping</mat-icon>
+  </button>
+  <button mat-menu-item (click)="handleMatMenu(2)">
+    <span>Đăng xuất</span>
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-menu>
